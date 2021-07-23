@@ -1,3 +1,4 @@
+
 var staffManager = new StaffManager();
 
 var staff = new Validator("#formAddStaff");
@@ -86,7 +87,6 @@ function showListStaff(staffManager) {
 
   var startPage = (pwdPage - 1) * row
   var endPage = pwdPage * row;
-
   if (totalStaff < endPage) {
     endPage = totalStaff;
   }
@@ -129,7 +129,7 @@ function delegationTable(event) {
 
   if (action === "delete") {
     staffManager.removeStaff(account);
-    pwdPage = pwdPage - 1;
+    pwdPage = 1;
     showListStaff(staffManager.listStaff);
   }
 }
@@ -178,6 +178,7 @@ function callModal(modalTitle, readOnly, type) {
 }
 
 function findStaffByClassification() {
+
   var content = document.querySelector("#searchName").value;
   var listStaffFinded = staffManager.findStaffByClassification(content);
 
@@ -185,4 +186,3 @@ function findStaffByClassification() {
   showListStaff(listStaffFinded);
 
 }
-

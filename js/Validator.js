@@ -25,6 +25,10 @@ function Validator(formSelector) {
 
         })
       }
+      var validation = /^[a-zA-z0-9]+$/;
+      if (!validation.test(value)) {
+        return "Vui lòng nhập vào tài khoảng hợp lệ";
+      }
       return (isNewName) ? undefined : "Tài khoản này đã tồn tại trên hệ thống";
     }
     ,
