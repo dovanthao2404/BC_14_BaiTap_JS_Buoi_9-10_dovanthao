@@ -86,6 +86,7 @@ function showListStaff(staffManager) {
 
   var startPage = (pwdPage - 1) * row
   var endPage = pwdPage * row;
+
   if (totalStaff < endPage) {
     endPage = totalStaff;
   }
@@ -128,6 +129,7 @@ function delegationTable(event) {
 
   if (action === "delete") {
     staffManager.removeStaff(account);
+    pwdPage = pwdPage - 1;
     showListStaff(staffManager.listStaff);
   }
 }
@@ -176,10 +178,10 @@ function callModal(modalTitle, readOnly, type) {
 }
 
 function findStaffByClassification() {
-
   var content = document.querySelector("#searchName").value;
   var listStaffFinded = staffManager.findStaffByClassification(content);
 
+  pwdPage = 1;
   showListStaff(listStaffFinded);
 
 }
