@@ -16,20 +16,20 @@ function Validator(formSelector) {
           return staff.account;
         })
       }
-      var isNewName = true;
+      var oldAccount;
       if (listAccount) {
-        listAccount.forEach((account) => {
-          if (value === account) {
-            isNewName = false;
-          }
-
+        oldAccount = listAccount.find((account) => {
+          return account === value;
         })
       }
       var validation = /^[a-zA-z0-9]+$/;
       if (!validation.test(value)) {
         return "Vui lòng nhập vào tài khoảng hợp lệ";
       }
-      return (isNewName) ? undefined : "Tài khoản này đã tồn tại trên hệ thống";
+      if (oldAccount) {
+        return "Tài khoản này đã tồn tại trên hệ thống";
+      }
+      return undefined;
     }
     ,
     digitalSignature: function (value) {
@@ -46,8 +46,28 @@ function Validator(formSelector) {
       return validation.test(value) ? undefined : 'Vui lòng nhập tên hợp lệ'
     },
     email: function (value) {
+      // Giả đò đây là API danh sách tên account :))))
+      var listStaff = JSON.parse(localStorage.getItem("listStaff"))
+      var listEmail;
+      if (listStaff) {
+        listEmail = listStaff.map(function (staff) {
+          return staff.email;
+        })
+      }
+      var oldEmail;
+      if (listEmail) {
+        oldEmail = listEmail.find((email) => {
+          return email === value;
+        })
+      }
       var emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-      return emailPattern.test(value) ? undefined : 'Vui lòng nhập email hợp lệ';
+      if (!emailPattern.test(value)) {
+        return 'Vui lòng nhập email hợp lệ';
+      }
+      if (oldEmail) {
+        return "Email đã tồn tại trên hệ thống"
+      }
+      return undefined;
     },
     min: function (min) {
       return function (value) {
