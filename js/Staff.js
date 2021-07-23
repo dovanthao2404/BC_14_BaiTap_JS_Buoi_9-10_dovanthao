@@ -1,3 +1,10 @@
+/**
+ * Mục đính: Quản lý các nghiệp vụ liên quan đến lớp nhân viên
+ * Ngày tạo: 23/7/2021
+ * Version: 1.0
+ * Người tao: Đỗ Văn Thảo
+ */
+
 function Staff(account, fullName, email, password, startingDate, basicSalary, position, workingHours, totalSalary, classification
 ) {
   this.account = account,

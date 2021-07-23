@@ -14,6 +14,10 @@ document.querySelector("#btnThem").addEventListener("click", function () {
 document.querySelector("#btnTimNV").addEventListener("click", findStaffByClassification)
 document.querySelector("#searchName").addEventListener("input", findStaffByClassification)
 
+/**
+ *
+ * @param {Lấy dữ liệu từ form tạo một staff mới}
+ */
 staff.onSubmit = function (data) {
   updateForm();
   function addStaff(data) {
@@ -31,6 +35,11 @@ staff.onSubmit = function (data) {
   showListStaff(staffManager.listStaff);
 }
 
+
+/**
+ *
+ * @param {Xử lý update cập nhật khi sửa account}
+ */
 function handleUpdate(account) {
   var inputs = document.querySelectorAll("[name][rules]")
   for (var i = 0; i < staffManager.listStaff.length; i++) {
@@ -69,6 +78,10 @@ document.querySelector("#ulPhanTrang").addEventListener("click", function (event
   }
 })
 
+/**
+ *
+ * @param {Hiển thị danh sách ra màn hinh}
+ */
 function showListStaff(staffManager) {
   var tableDanhSach = document.getElementById("tableDanhSach");
   var ulPagination = document.getElementById("ulPhanTrang");
@@ -111,6 +124,11 @@ function showListStaff(staffManager) {
   tableDanhSach.innerHTML = html;
 }
 
+
+/**
+ *
+ * @param {Bắt sự kiện khi người dùng click vào table}
+ */
 function delegationTable(event) {
   var account = event.target.getAttribute("data-account");
   var action = event.target.getAttribute("data-action");
@@ -134,6 +152,11 @@ function delegationTable(event) {
   }
 }
 
+
+/**
+ *
+ * @param {Update form}
+ */
 function updateForm(Staff) {
   var inputs = document.querySelectorAll("[name][rules]")
 
@@ -147,6 +170,10 @@ function updateForm(Staff) {
   }
 }
 
+/**
+ *
+ * @param {Xóa thông báo lỗi}
+ */
 function removeMessage() {
   var listMessage = document.querySelectorAll(".form-message");
 
@@ -157,7 +184,10 @@ function removeMessage() {
 }
 
 
-
+/**
+ *
+ * @param {Gọi modal hiển thị theo param}
+ */
 function callModal(modalTitle, readOnly, type) {
   document.querySelector("#header-title").innerText = modalTitle;
   if (readOnly) {
@@ -177,6 +207,11 @@ function callModal(modalTitle, readOnly, type) {
   }
 }
 
+
+/**
+ *
+ * @param {Tìm nhân viên theo xếp loại}
+ */
 function findStaffByClassification() {
 
   var content = document.querySelector("#searchName").value;

@@ -1,3 +1,11 @@
+/**
+ * Mục đính: Quản lý các nghiệp vụ liên quan đến lớp Quản lý nhân viên
+ * Ngày tạo: 23/7/2021
+ * Version: 1.0
+ * Người tao: Đỗ Văn Thảo
+ */
+
+
 
 function StaffManager() {
   this.listStaff =

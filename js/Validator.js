@@ -1,8 +1,17 @@
 function Validator(formSelector) {
   var formRules = {};
 
+  /**
+ *
+ * @param {Đối tượng gọi tới validation}
+ */
   _this = this;
 
+
+  /**
+ *
+ * @param {các quy tắc của form}
+ */
   var validatorRules = {
     required: function (value) {
       return value ? undefined : "Vui lòng nhập vào trường này";
@@ -150,13 +159,22 @@ function Validator(formSelector) {
     },
   }
 
-
+  /**
+   *
+   * @param {Lấy form}
+   */
   var formElement = document.querySelector(formSelector);
 
   if (formElement) {
 
+    /**
+     *
+     * @param {Lấy cái input có thuộc tính name và rules}
+     */
     var inputs = formElement.querySelectorAll("[name][rules]")
-
+    /**
+     * @param {Gán các rule cho các input Attribute name và rules}
+     */
     for (var input of inputs) {
       var rules = input.getAttribute("rules").split("|");
 
@@ -191,6 +209,9 @@ function Validator(formSelector) {
   }
 
 
+  /**
+   * @param {TÌm lớp cha của input có class trung với param selector}
+   */
   function getParent(element, selector) {
     while (element.parentElement) {
       if (element.parentElement.matches(selector)) {
@@ -200,6 +221,10 @@ function Validator(formSelector) {
     }
   }
 
+
+  /**
+   * @param {Xử lý kiểm tra}
+   */
   function handleValidate(event) {
 
     var rules = formRules[event.target.name];
@@ -220,9 +245,11 @@ function Validator(formSelector) {
 
     }
     return !errorMessage;
-
   }
 
+  /**
+   * @param {Clear lỗi}
+   */
   function handleClearError(event) {
     var formGroup = getParent(event.target, ".form-group");
     var formMessage = formGroup.querySelector(".form-message");
@@ -231,6 +258,10 @@ function Validator(formSelector) {
 
   }
 
+
+  /**
+   * @param {Xử lý khi người dùng nhân vào nút thêm nhân viên }
+   */
   formElement.onsubmit = function (event) {
     event.preventDefault();
 
