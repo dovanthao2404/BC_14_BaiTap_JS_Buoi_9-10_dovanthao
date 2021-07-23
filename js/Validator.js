@@ -16,6 +16,9 @@ function Validator(formSelector) {
     required: function (value) {
       return value ? undefined : "Vui lòng nhập vào trường này";
     },
+    requiredSL: function (value) {
+      return value ? undefined : "Vui lòng chọn";
+    },
     account: function (value) {
       // Giả đò đây là API danh sách tên account :))))
       var listStaff = JSON.parse(localStorage.getItem("listStaff"))
