@@ -10,17 +10,21 @@ function Validator(formSelector) {
     account: function (value) {
       // Giả đò đây là API danh sách tên account :))))
       var listStaff = JSON.parse(localStorage.getItem("listStaff"))
-      var listAccount = listStaff.map(function (staff) {
-        return staff.account;
-      })
-
+      var listAccount;
+      if (listStaff) {
+        listAccount = listStaff.map(function (staff) {
+          return staff.account;
+        })
+      }
       var isNewName = true;
-      listAccount.forEach((account) => {
-        if (value === account) {
-          isNewName = false;
-        }
+      if (listAccount) {
+        listAccount.forEach((account) => {
+          if (value === account) {
+            isNewName = false;
+          }
 
-      })
+        })
+      }
       return (isNewName) ? undefined : "Tài khoản này đã tồn tại trên hệ thống";
     }
     ,
